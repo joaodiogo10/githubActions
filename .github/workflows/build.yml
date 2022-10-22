@@ -1,17 +1,16 @@
 name: Build
 
 on: [push, pull_request]
-env:
-  MARIADB_USER: dev_user
-  MARIADB_PASSWORD: dev_pass 
-  MARIADB_DATABASE: sites_man_db
-  MARIADB_HOST: 0.0.0.0
-  MARIADB_PORT: 3306
+
 
 jobs:
-  run_dev_container:
-    runs-on: ubuntu-latest
-
+  my_job:
+    env:
+      MARIADB_USER: dev_user
+      MARIADB_PASSWORD: dev_pass 
+      MARIADB_DATABASE: sites_man_db
+      MARIADB_HOST: 0.0.0.0
+      MARIADB_PORT: 3306
     services:
       mariadb:
         image: mariadb:latest
@@ -22,9 +21,7 @@ jobs:
           --health-interval=5s
           --health-timeout=2s
           --health-retries=3
-
-  my_job:
-    
+  
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
