@@ -2,20 +2,20 @@ name: Build
 
 on: [push, pull_request]
 
-
+env:
+  MARIADB_USER: dev_user
+  MARIADB_PASSWORD: dev_pass 
+  MARIADB_DATABASE: sites_man_db
+  MARIADB_HOST: 0.0.0.0
+  MARIADB_PORT: 3306
+  MYSQL_USER: dev_user
+  MYSQL_PASSWORD: dev_pass
+  MYSQL_DATABASE: sites_man_db
+  MYSQL_ROOT_PASSWORD: root
+  
 jobs:
   my_job:
     runs-on: ubuntu-latest
-    env:
-      MARIADB_USER: dev_user
-      MARIADB_PASSWORD: dev_pass 
-      MARIADB_DATABASE: sites_man_db
-      MARIADB_HOST: 0.0.0.0
-      MARIADB_PORT: 3306
-      MYSQL_USER: dev_user
-      MYSQL_PASSWORD: dev_pass
-      MYSQL_DATABASE: sites_man_db
-      MYSQL_ROOT_PASSWORD: root
     services:
       mariadb:
         image: mariadb
