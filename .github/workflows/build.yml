@@ -5,11 +5,11 @@ on: [push, pull_request]
 jobs:
   myJob:
     env:
-      MARIADB_USER=dev_user
-      MARIADB_PASSWORD=dev_pass 
-      MARIADB_DATABASE=sites_man_db
-      MARIADB_HOST=0.0.0.0
-      MARIADB_PORT=3306
+      MARIADB_USER: dev_user
+      MARIADB_PASSWORD: dev_pass 
+      MARIADB_DATABASE: sites_man_db
+      MARIADB_HOST: 0.0.0.0
+      MARIADB_PORT: 3306
 
     runs-on: ubuntu-latest
     steps:
