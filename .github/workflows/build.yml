@@ -42,7 +42,7 @@ jobs:
       - name: install all dependencies
         run: pip install -r requirements.txt
       - name: install sqladmin
-        run: sudo apt-get install mysql-shell
+        run: apt-get install mysql-shell
       - name: Wait for db container
         env:
           PORT: ${{ job.services.mariadb.ports[3306] }}
