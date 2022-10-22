@@ -41,12 +41,12 @@ jobs:
         run: python -m pip install --upgrade pip
       - name: install all dependencies
         run: pip install -r requirements.txt
-      - name: install sqladmin
-        run: apt-get install mysql-shell
-      - name: Wait for db container
-        env:
-          PORT: ${{ job.services.mariadb.ports[3306] }}
-        run: mysqladmin --help
+      # - name: install sqladmin
+      #   run: apt-get install mysql-shell
+      # - name: Wait for db container
+      #   env:
+      #     PORT: ${{ job.services.mariadb.ports[3306] }}
+      #   run: mysqladmin --help
       - name: test with pytest
         run: |
           PYTHONPATH=${PYTHONPATH}:./src python -m pytest
