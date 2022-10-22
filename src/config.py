@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     MARIADB_HOST: str
     MARIADB_PORT: str
 
+
     class Config:
         env_file = ".env"
 settings = Settings()
