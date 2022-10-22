@@ -27,7 +27,7 @@ jobs:
       - name: install all dependencies
         run: pip install -r requirements.txt
       - name: Assign PYTHONPATH
-        run: PTHONPATH="${PYTHONPATH}:/usr/app/src"
+        run: PTHONPATH="${PYTHONPATH}:./src"
       - name: test with pytest
         run: |
           pytest
