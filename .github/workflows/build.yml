@@ -39,6 +39,8 @@ jobs:
       - name: install all dependencies
         run: pip install -r requirements.txt
       - name: Wait for db container
+        env:
+          PORT: ${{ job.services.mariadb.ports[3306] }}
         run: |
             while ! mysqladmin ping -h"127.0.0.1" -P"3306" -u ${MARIADB_USER} -p${MARIADB_PASSWORD} --silent; do
               sleep 1
