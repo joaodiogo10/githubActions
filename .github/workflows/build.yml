@@ -5,6 +5,7 @@ on: [push, pull_request]
 
 jobs:
   my_job:
+    runs-on: ubuntu-latest
     env:
       MARIADB_USER: dev_user
       MARIADB_PASSWORD: dev_pass 
@@ -20,13 +21,8 @@ jobs:
         image: mariadb:latest
         ports:
           - 3306
-        options: >-
-          --health-cmd="mysqladmin ping" 
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
-    runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
         uses: actions/checkout@v3
