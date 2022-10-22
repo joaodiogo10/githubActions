@@ -33,8 +33,8 @@ jobs:
         run: echo "Hello world!"
       #- name: Install python
       #  uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+      #  with:
+      #    python-version: "3.10"
       # - name: Install mariadb-dev package
       #   run: apt-get install libmariadb-dev
       - name: update pip
