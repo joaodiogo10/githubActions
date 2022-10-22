@@ -44,10 +44,7 @@ jobs:
       - name: Wait for db container
         env:
           PORT: ${{ job.services.mariadb.ports[3306] }}
-        run: |
-            while ! mysqladmin --help
-              sleep 1
-            done    
+        run: mysqladmin --help
       - name: test with pytest
         run: |
           PYTHONPATH=${PYTHONPATH}:./src python -m pytest
