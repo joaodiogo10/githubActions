@@ -17,6 +17,7 @@ jobs:
   my_job:
 
     runs-on: ubuntu-latest
+    container: ubuntu
     services:
       mariadb:
         image: mysql:5.7
