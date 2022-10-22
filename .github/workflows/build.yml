@@ -22,7 +22,7 @@ jobs:
         image: mysql:5.7
         ports:
           - 3306  
-        #options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
     container: python:3.10
 
@@ -42,12 +42,12 @@ jobs:
       - name: install all dependencies
         run: pip install -r requirements.txt
       - name: Wait for db container
-        env:
-          PORT: ${{ job.services.mariadb.ports[3306] }}
-        run: |
-            while ! mysqladmin ping -h"0.0.0.0" -P"$PORT" -u ${MARIADB_USER} -p${MARIADB_PASSWORD}; do
-              sleep 1
-            done    
+        # env:
+        #   PORT: ${{ job.services.mariadb.ports[3306] }}
+        # run: |
+        #     while ! mysqladmin ping -h"0.0.0.0" -P"$PORT" -u ${MARIADB_USER} -p${MARIADB_PASSWORD}; do
+        #       sleep 1
+        #     done    
       - name: test with pytest
         run: |
           PYTHONPATH=${PYTHONPATH}:./src python -m pytest
