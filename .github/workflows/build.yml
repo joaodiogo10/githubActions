@@ -42,7 +42,7 @@ jobs:
         env:
           PORT: ${{ job.services.mariadb.ports[3306] }}
         run: |
-            while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" -u ${MARIADB_USER} -p${MARIADB_PASSWORD}; do
+            while ! mysqladmin ping -h"0.0.0.0" -P"$PORT" -u ${MARIADB_USER} -p${MARIADB_PASSWORD}; do
               sleep 1
             done    
       - name: test with pytest
