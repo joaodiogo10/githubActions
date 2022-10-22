@@ -2,7 +2,7 @@ name: Build
 
 on: [push, pull_request]
 
-job:
+jobs:
   myJob:
     runs-on: ubuntu-latest
     steps:
