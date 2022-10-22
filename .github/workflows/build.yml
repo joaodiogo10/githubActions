@@ -20,7 +20,7 @@ jobs:
       mariadb:
         image: mariadb
         ports:
-          - 3306:3306
+          - 3306  
         #options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
     steps:
@@ -42,7 +42,7 @@ jobs:
         env:
           PORT: ${{ job.services.mariadb.ports[3306] }}
         run: |
-            while ! mysqladmin ping -h"127.0.0.1" -P"3306" -u ${MARIADB_USER} -p${MARIADB_PASSWORD} --silent; do
+            while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" -u ${MARIADB_USER} -p${MARIADB_PASSWORD} --silent; do
               sleep 1
             done    
       - name: test with pytest
