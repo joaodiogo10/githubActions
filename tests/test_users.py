@@ -14,7 +14,7 @@ def test_createUserValid(client: TestClient):
 
     # Assert
     new_user = schemas.User(**res.json())
-    assert new_user.email == "joao@gmail.com"
+    assert new_user.email == "joo@gmail.com"
     assert res.status_code == status.HTTP_201_CREATED
 
 def test_create_user_alreadyRegisteredEmail(test_user: schemas.User, client: TestClient):
