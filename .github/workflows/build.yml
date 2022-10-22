@@ -17,7 +17,6 @@ jobs:
   my_job:
 
     runs-on: ubuntu-latest
-    container: ubuntu
     services:
       mariadb:
         image: mysql:5.7
@@ -34,8 +33,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-      # - name: install mariadb-dev package
-      #   run: apt-get install libmariadb-dev
+      - name: install mariadb-dev package
+        run: apt-get install libmariadb-dev
       - name: update pip
         run: python -m pip install --upgrade pip
       - name: install all dependencies
