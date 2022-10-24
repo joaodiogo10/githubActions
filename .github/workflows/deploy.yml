@@ -13,4 +13,4 @@ on:
 
 jobs:
   build:
-    uses: joaodiogo10/githubActions/.github/workflows/build.ymll@main
+    uses: joaodiogo10/githubActions/.github/workflows/build.yml@main
