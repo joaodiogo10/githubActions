@@ -19,12 +19,12 @@ on:
 
 jobs:
   build_and_test:
+    runs-on: ubuntu-latest
     uses: joaodiogo10/githubActions/.github/workflows/build.yml@development
     secrets: inherit
   
   deploy_aws:
-    runs-on: ubuntu-latest
     needs: build_and_test
     steps:
       - name: test with pytest
-        run: "Deploying..."
+        run: echo "Deploying..."
