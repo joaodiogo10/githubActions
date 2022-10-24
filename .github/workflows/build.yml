@@ -9,7 +9,6 @@ on:
     paths:
       - src/**
 
-on:
   workflow_call:
   
 jobs:
