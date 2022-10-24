@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - src/**
-      - .github/workflows/deploy.yml@main
+      - .github/workflows/deploy.yml
 
   pull_request:
     paths:
@@ -13,4 +13,4 @@ on:
 
 jobs:
   build:
-    uses: joaodiogo10/githubActions/.github/workflows/build.yml
+    uses: joaodiogo10/githubActions/.github/workflows/build.ymll@main
