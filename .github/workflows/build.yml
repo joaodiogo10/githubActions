@@ -3,33 +3,33 @@ name: Build
 on: 
   push:
     paths:
-      - tests/**
+      - src/**
   pull_request:
     paths:
-      - tests/**
+      - src/**
   
 jobs:
   my_job:
     runs-on: ubuntu-latest
     
     env:
-      MARIADB_USER: dev_user
-      MARIADB_PASSWORD: dev_pass 
-      MARIADB_DATABASE: sites_man_db
+      MARIADB_USER: ${{secrets.MARIADB_USER}}
+      MARIADB_PASSWORD: ${{secrets.MARIADB_PASSWORD}} 
+      MARIADB_DATABASE: ${{secrets.MARIADB_DATABASE}}
       MARIADB_HOST: db
-      MARIADB_PORT: 3306
+      MARIADB_PORT: ${{secrets.MARIADB_PORT}}
     
     services:
       db:
         image: mariadb
         env:
-          MYSQL_USER: dev_user
-          MYSQL_PASSWORD: dev_pass
-          MYSQL_DATABASE: sites_man_db
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_USER: ${{secrets.MARIADB_USER}}
+          MYSQL_PASSWORD: ${{secrets.MARIADB_PASSWORD}}
+          MYSQL_DATABASE: ${{secrets.MARIADB_DATABASE}}
+          MYSQL_ROOT_PASSWORD: ${{secrets.MARIADB_ROOT_PASSWORD}}
             
         ports:
-          - 3306  
+          - ${{secrets.MARIADB_PORT}}  
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
     container: python:3.10
