@@ -6,6 +6,7 @@ on:
     paths:
       - src/**
       - .github/workflows/deploy.yml
+      - .github/workflows/build.yml
 
   pull_request:
     paths:
