@@ -15,8 +15,8 @@ on:
 jobs:
   deploy:
     - uses: joaodiogo10/githubActions/.github/workflows/build.yml@main
-    with:
-      MARIADB_USER: ${{ secrets.MARIADB_USER }}
-      MARIADB_PASSWORD: ${{ secrets.MARIADB_PASSWORD }} 
-      MARIADB_DATABASE: ${{ secrets.MARIADB_DATABASE }}
-      MARIADB_ROOT_PASSWORD: ${{ secrets.MARIADB_ROOT_PASSWORD }}
+      with:
+        MARIADB_USER: ${{ secrets.MARIADB_USER }}
+        MARIADB_PASSWORD: ${{ secrets.MARIADB_PASSWORD }} 
+        MARIADB_DATABASE: ${{ secrets.MARIADB_DATABASE }}
+        MARIADB_ROOT_PASSWORD: ${{ secrets.MARIADB_ROOT_PASSWORD }}
