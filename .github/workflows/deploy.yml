@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - src/**
-      - .github/workflows/deploy.tml
+      - .github/workflows/deploy.yml@main
 
   pull_request:
     paths:
