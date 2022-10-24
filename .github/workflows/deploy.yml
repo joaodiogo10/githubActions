@@ -1,17 +1,21 @@
 name: Deploy
 
-on: 
-  push:
+on:
+  pull_request:
+    branches:    
+      - main
     paths:
       - src/**
       - .github/workflows/deploy.yml
-      - .github/workflows/build.yml
-
-  pull_request:
+    
+  push:
+    branches:    
+      - main
     paths:
       - src/**
+      - .github/workflows/deploy.yml
 
 jobs:
   deploy_aws:
-    uses: joaodiogo10/githubActions/.github/workflows/build.yml@main
+    uses: joaodiogo10/githubActions/.github/workflows/build.yml@development
     secrets: inherit
