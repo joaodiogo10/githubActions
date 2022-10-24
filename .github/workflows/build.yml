@@ -18,7 +18,7 @@ jobs:
       MARIADB_PASSWORD: ${{secrets.MARIADB_PASSWORD}} 
       MARIADB_DATABASE: ${{secrets.MARIADB_DATABASE}}
       MARIADB_HOST: db
-      MARIADB_PORT: ${{secrets.MARIADB_PORT}}
+      MARIADB_PORT: 3306
     
     services:
       db:
@@ -30,7 +30,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: ${{secrets.MARIADB_ROOT_PASSWORD}}
             
         ports:
-          - 3306
+          - 3306  
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
     container: python:3.10
