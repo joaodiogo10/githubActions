@@ -13,8 +13,8 @@ on:
       - src/**
 
 jobs:
-  build:
-    uses: joaodiogo10/githubActions/.github/workflows/build.yml@main
+  deploy:
+    - uses: joaodiogo10/githubActions/.github/workflows/build.yml@main
     with:
       MARIADB_USER: ${{ secrets.MARIADB_USER }}
       MARIADB_PASSWORD: ${{ secrets.MARIADB_PASSWORD }} 
