@@ -10,9 +10,26 @@ on:
       - src/**
 
   workflow_call:
-  
+    workflow_call:
+      secrets:
+        MARIADB_USER:
+          required: true
+          type: string
+          
+        MARIADB_PASSWORD:
+          required: true
+          type: string
+
+        MARIADB_ROOT_PASSWORD:
+          required: true
+          type: string
+
+        MARIADB_DATABASE:
+          required: true
+          type: string
+
 jobs:
-  my_job:
+  build_and_test:
     runs-on: ubuntu-latest
     
     env:
