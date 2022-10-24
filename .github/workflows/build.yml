@@ -10,19 +10,6 @@ on:
       - src/**
 
   workflow_call:
-    workflow_call:
-      secrets:
-        MARIADB_USER:
-          required: true
-          
-        MARIADB_PASSWORD:
-          required: true
-
-        MARIADB_ROOT_PASSWORD:
-          required: true
-
-        MARIADB_DATABASE:
-          required: true
 
 jobs:
   build_and_test:
