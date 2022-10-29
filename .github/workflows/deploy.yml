@@ -71,7 +71,7 @@ jobs:
           aws-region: eu-west-3
 
       - name: Update DB container in ECS task definition
-        id: build-db-image
+        id: db-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
@@ -84,7 +84,7 @@ jobs:
             MARIADB_USER=$secrets.MARIADB_USER
 
       - name: Update API container in ECS task definition
-        id: build-api-image
+        id: build-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ${{ steps.db-task-def.outputs.task-definition }}
@@ -98,7 +98,7 @@ jobs:
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1.4.10
         with:
-          task-definition: ${{ steps.build-api-image.outputs.task-definition }}
+          task-definition: ${{ steps.build-task-def.outputs.task-definition }}
           service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           wait-for-service-stability: true
