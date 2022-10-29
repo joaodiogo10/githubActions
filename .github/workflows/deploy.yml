@@ -29,10 +29,12 @@ env:
   DB_CONTAINER_NAME: mariadb-container              # set this to the name of the DB container in the
                                                     # containerDefinitions section of your task definition
 jobs:
+  build_and_test:
+    uses: joaodiogo10/githubActions/.github/workflows/build.yml@development
+    secrets: inherit
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    uses: joaodiogo10/githubActions/.github/workflows/build.yml@development
 
     steps:
       - name: Checkout
