@@ -77,11 +77,11 @@ jobs:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
           container-name: ${{ env.DB_CONTAINER_NAME }}
           image: mariadb:10.8
-          environment-variables:
-            MARIADB_DATABASE=$secrets.MARIADB_DATABASE
-            MARIADB_PASSWORD=$secrets.MARIADB_PASSWORD
-            MARIADB_ROOT_PASSWORD=$secrets.MARIADB_ROOT_PASSWORD
-            MARIADB_USER=$secrets.MARIADB_USER
+          environment-variables: |
+            MARIADB_DATABASE=${{ secrets.MARIADB_DATABASE }}
+            MARIADB_PASSWORD=${{ secrets.MARIADB_PASSWORD }}
+            MARIADB_ROOT_PASSWORD=${{ secrets.MARIADB_ROOT_PASSWORD }}
+            MARIADB_USER=${{ secrets.MARIADB_USER }}
 
       - name: Update API container in ECS task definition
         id: build-task-def
@@ -91,9 +91,9 @@ jobs:
           container-name: ${{ env.API_CONTAINER_NAME }}
           image: ${{ steps.build-api-image.outputs.image }}
           environment-variables: |
-            MARIADB_DATABASE=$secrets.MARIADB_DATABASE
-            MARIADB_PASSWORD=$secrets.MARIADB_PASSWORD
-            MARIADB_USER=$secrets.MARIADB_USER
+            MARIADB_DATABASE=${{ secrets.MARIADB_DATABASE }
+            MARIADB_PASSWORD=${{ secrets.MARIADB_PASSWORD }
+            MARIADB_USER=${{ secrets.MARIADB_USER }
             
 
       - name: Deploy Amazon ECS task definition
@@ -102,4 +102,4 @@ jobs:
           task-definition: ${{ steps.build-task-def.outputs.task-definition }}
           service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
-          wait-for-service-stability: true
+          wait-for-service-stability: false
