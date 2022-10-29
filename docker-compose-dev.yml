@@ -19,18 +19,20 @@ services:
 
     volumes:
       - mariadb-volume:/var/lib/mysql/
-      
+
+    healthcheck:
+     test: ["CMD", "mysqladmin", "ping", "--silent"]
+
   api:
     build: 
       context: .
       dockerfile: Dockerfile
     
+    depends_on:
+      - db
     hostname: api
     ports:
       - 8000:8000
-    
-    depends_on:
-      - db
     
     restart: always
     
