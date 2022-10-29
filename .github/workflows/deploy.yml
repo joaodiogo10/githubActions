@@ -91,9 +91,9 @@ jobs:
           container-name: ${{ env.API_CONTAINER_NAME }}
           image: ${{ steps.build-api-image.outputs.image }}
           environment-variables: |
-            MARIADB_DATABASE=${{ secrets.MARIADB_DATABASE }
-            MARIADB_PASSWORD=${{ secrets.MARIADB_PASSWORD }
-            MARIADB_USER=${{ secrets.MARIADB_USER }
+            MARIADB_DATABASE=${{ secrets.MARIADB_DATABASE }}
+            MARIADB_PASSWORD=${{ secrets.MARIADB_PASSWORD }}
+            MARIADB_USER=${{ secrets.MARIADB_USER }}
             
 
       - name: Deploy Amazon ECS task definition
