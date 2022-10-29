@@ -68,7 +68,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-3
 
-
       - name: Update DB container in ECS task definition
         id: db-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
