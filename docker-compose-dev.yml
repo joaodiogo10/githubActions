@@ -17,7 +17,6 @@ services:
       - MARIADB_USER=dev_user
       - MARIADB_PASSWORD=dev_pass
 
-
     volumes:
       - mariadb-volume:/var/lib/mysql/
       
