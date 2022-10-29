@@ -17,6 +17,7 @@ on:
       - src/**
       - .github/workflows/*
 
+
 env:
   ECR_REGISTRY_ALIAS: incrivel
   ECR_REPOSITORY: github_actions_test               # set this to your Amazon ECR repository name
