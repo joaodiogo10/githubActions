@@ -55,6 +55,7 @@ jobs:
         id: build-api-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
+          #ECR_REGISTRY_ALIAS: ${{ ECR_REGISTRY_ALIAS }}
           IMAGE_TAG: ${{ github.sha }}
 
         run: |
@@ -77,11 +78,11 @@ jobs:
           container-name: ${{ env.DB_CONTAINER_NAME }}
           image: mariadb:10.8
           environment-variables:
-            MARIADB_DATABASE: ${{ secrets.MARIADB_DATABASE }}
-            MARIADB_PASSWORD: ${{ secrets.MARIADB_PASSWORD }}
-            MARIADB_ROOT_PASSWORD: ${{ secrets.MARIADB_ROOT_PASSWORD }}
-            MARIADB_USER: ${{ secrets.MARIADB_USER }}
-          
+            MARIADB_DATABASE=$secrets.MARIADB_DATABASE
+            MARIADB_PASSWORD=$secrets.MARIADB_PASSWORD
+            MARIADB_ROOT_PASSWORD=$secrets.MARIADB_ROOT_PASSWORD
+            MARIADB_USER=$secrets.MARIADB_USER
+
       - name: Update API container in ECS task definition
         id: api-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
@@ -89,11 +90,10 @@ jobs:
           task-definition: ${{ steps.db-task-def.outputs.task-definition }}
           container-name: ${{ env.API_CONTAINER_NAME }}
           image: ${{ steps.build-api-image.outputs.image }}
-          environment-variables:
-            MARIADB_DATABASE: ${{ secrets.MARIADB_DATABASE }}
-            MARIADB_PASSWORD: ${{ secrets.MARIADB_PASSWORD }}
-            MARIADB_USER: ${{ secrets.MARIADB_USER }}
-            
+          environment-variables: |
+            MARIADB_DATABASE=$secrets.MARIADB_DATABASE
+            MARIADB_PASSWORD=$secrets.MARIADB_PASSWORD
+            MARIADB_USER=$secrets.MARIADB_USER
             
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1.4.10
