@@ -32,8 +32,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    needs: build_and_test
-    
+    uses: joaodiogo10/githubActions/.github/workflows/build.yml@development
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
