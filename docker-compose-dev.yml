@@ -41,7 +41,7 @@ services:
       - MARIADB_HOST=db
       - MARIADB_PORT=3306
       
-    command: sh -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    command: sh -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 80 --reload"
     volumes:
       - ./:/usr/app:ro
 
