@@ -95,6 +95,7 @@ jobs:
             MARIADB_PASSWORD=$secrets.MARIADB_PASSWORD
             MARIADB_USER=$secrets.MARIADB_USER
             
+            
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1.4.10
         with:
