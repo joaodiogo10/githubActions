@@ -17,7 +17,6 @@ on:
       - src/**
       - .github/workflows/*
 
-
 env:
   ECR_REGISTRY_ALIAS: incrivel
   ECR_REPOSITORY: github_actions_test               # set this to your Amazon ECR repository name
@@ -55,7 +54,6 @@ jobs:
         id: build-api-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
-          #ECR_REGISTRY_ALIAS: ${{ ECR_REGISTRY_ALIAS }}
           IMAGE_TAG: ${{ github.sha }}
 
         run: |
