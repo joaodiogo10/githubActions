@@ -70,7 +70,7 @@ jobs:
 
       - name: Fill in api ID to ECS task definition
         id: api-task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v1.0
+        uses: aws-actions/amazon-ecs-render-task-definition@v1.4.10
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
           container-name: ${{ env.API_CONTAINER_NAME }}
